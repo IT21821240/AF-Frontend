@@ -16,6 +16,7 @@ app.use(cors(
         origin: ["https://affrontend-rno0cdwdm-shobithaa-s-projects.vercel.app"],
         methods: ["POST", "GET"],
         credentials: true
+    }
     ));
 app.use(bodyParser.json());
 
