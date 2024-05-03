@@ -13,7 +13,7 @@ const PORT = process.env.PORT || "8070";
 
 app.use(cors(
     {
-        origin: ["https://affrontend-rno0cdwdm-shobithaa-s-projects.vercel.app"],
+        origin: [""],
         methods: ["POST", "GET"],
         credentials: true
     }
