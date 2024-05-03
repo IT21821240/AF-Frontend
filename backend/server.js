@@ -11,7 +11,13 @@ const app = express();
 
 const PORT = process.env.PORT || "8070";
 
-app.use(cors());
+app.use(cors(
+    {
+        origin: ["https://af-assignment2-backend.vercel.app"],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+    ));
 app.use(bodyParser.json());
 
 app.use("/api/create", require("./routes/userRoutes"));
