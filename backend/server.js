@@ -11,7 +11,12 @@ const app = express();
 
 const PORT = process.env.PORT || "8070";
 
-app.use(cors());
+app.use(cors(
+    {
+        origin: ["https://affrontend-rno0cdwdm-shobithaa-s-projects.vercel.app"],
+        methods: ["POST", "GET"],
+        credentials: true
+    ));
 app.use(bodyParser.json());
 
 app.use("/api/create", require("./routes/userRoutes"));
