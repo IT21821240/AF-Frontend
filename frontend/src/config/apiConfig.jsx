@@ -1,0 +1,2 @@
+const VITE_NASA_API_KEY= "vl99F5L1Dxin2WLy7aghrbzvEzDQ4BkffVd4KISq"
+export default VITE_NASA_API_KEY;
