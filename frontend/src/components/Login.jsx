@@ -50,7 +50,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8070/api/create/login', {
+      const response = await fetch('https://af-assignment-2-backend.onrender.com/api/create/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
