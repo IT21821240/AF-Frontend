@@ -1,20 +1,8 @@
 {
-    "version": 2,
-    "builds":[
-        {
-            "src":"*.js",
-            "use":"@vercel/vite-react"
-        }
-    ],
-    "routes": [
+  "rewrites": [
       {
-        "src": "/api/(.*)",
-        "dest": "server.js"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "server.js"
- }
-]
+          "source": "/(.*)",
+          "destination": "/"
+      }
+  ]
 }
-  
