@@ -13,7 +13,7 @@ const PORT = process.env.PORT || "8070";
 
 app.use(cors(
     {
-        origin: [""],
+        origin: ["https://af-assignment2-frontend.vercel.app"],
         methods: ["POST", "GET"],
         credentials: true
     }
