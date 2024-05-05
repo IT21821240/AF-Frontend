@@ -12,19 +12,8 @@ const Login = () => {
     password: '',
   });
 
-  const [passwordError, setPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [error, setError] = useState('');
-
-  const validatePassword = (password) => {
-    if (!password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$/)) {
-      setPasswordError("Invalid Password");
-    } else if (password.length < 10) {
-      setPasswordError("Password should consist at least 10 characters");
-    }else {
-      setPasswordError("");
-    }
-  };
 
   const validateEmail = (email) => {
     if (!email.match(/^[a-z0-9._%+-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$/)) {
@@ -42,8 +31,6 @@ const Login = () => {
 
     if (name === 'email') {
       validateEmail(value);
-    } else if (name === 'password') {
-      validatePassword(value);
     } 
   };
 
@@ -104,10 +91,9 @@ const Login = () => {
               placeholder="Type your password"
               value={formData.password}
               onChange={handleChange}
-              className={`mt-1 p-2 border rounded-md w-full ${passwordError ? 'border-red-500' : ''}`}
+              className={`mt-1 p-2 border rounded-md w-full`}
               required
             />
-            {passwordError && <p className="text-red-500">{passwordError}</p>}
           </div>
           {error && <p className="text-red-500">{error}</p>}
           <div className='text-center'>
