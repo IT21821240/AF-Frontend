@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import VITE_NASA_API_KEY from "../config/apiConfig"
+import VITE_NASA_API_KEY from "../config/apiConfig";
 
 const APODViewer = () => {
   const [startDate, setStartDate] = useState("");
@@ -69,8 +69,8 @@ const APODViewer = () => {
   const formatDate = (date) => {
     const d = new Date(date);
     const year = d.getFullYear();
-    let month = (d.getMonth() + 1).toString().padStart(2, '0');
-    let day = d.getDate().toString().padStart(2, '0');
+    let month = (d.getMonth() + 1).toString().padStart(2, "0");
+    let day = d.getDate().toString().padStart(2, "0");
     return `${year}-${month}-${day}`;
   };
 
@@ -88,12 +88,23 @@ const APODViewer = () => {
         Astronomy Picture of the Day
       </h1>
       <p className="text-gray-800 text-lg lg:text-xl leading-relaxed mb-6">
-        The Astronomy Picture of the Day (APOD) is a popular website and service provided by NASA that showcases a different astronomical image or photograph each day, along with a brief explanation written by a professional astronomer. Since its inception in 1995, APOD has become a widely appreciated resource for astronomy enthusiasts, educators, and the general public alike. The images featured on APOD cover a wide range of topics within astronomy and astrophysics, including celestial phenomena, space exploration missions, cosmic events, and breathtaking views of the universe captured by telescopes, satellites, and spacecraft. APOD serves as both an educational tool and a source of inspiration, offering captivating glimpses into the wonders of the cosmos on a daily basis.
+        The Astronomy Picture of the Day (APOD) is a popular website and service
+        provided by NASA that showcases a different astronomical image or
+        photograph each day, along with a brief explanation written by a
+        professional astronomer. Since its inception in 1995, APOD has become a
+        widely appreciated resource for astronomy enthusiasts, educators, and the
+        general public alike. The images featured on APOD cover a wide range of
+        topics within astronomy and astrophysics, including celestial phenomena,
+        space exploration missions, cosmic events, and breathtaking views of the
+        universe captured by telescopes, satellites, and spacecraft. APOD serves
+        as both an educational tool and a source of inspiration, offering
+        captivating glimpses into the wonders of the cosmos on a daily basis.
       </p>
-  
+
       <div className="mb-6 text-center">
         <p className="text-lg lg:text-xl mb-2 font-bold">
-          Search for APOD images by start date and end date to view images from those days
+          Search for APOD images by start date and end date to view images from
+          those days
         </p>
         <div className="flex flex-col lg:flex-row items-center justify-center">
           <input
@@ -122,14 +133,27 @@ const APODViewer = () => {
           {apodData.map((apod) => (
             <div key={apod.date} className="mb-6 lg:flex">
               <div className="max-w-screen-md mx-auto bg-white border border-gray-400 shadow-xl rounded-lg overflow-hidden lg:w-1/2 lg:mr-4 mb-4 lg:mb-0">
-                <img
-                  src={apod.url}
-                  alt={apod.title}
-                  className="w-full h-auto object-cover"
-                />
+                {/* Conditionally render image or video based on media type */}
+                {apod.media_type === "image" ? (
+                  <img
+                    src={apod.url}
+                    alt={apod.title}
+                    className="w-full h-auto object-cover"
+                  />
+                ) : (
+                  <iframe
+                    title={apod.title}
+                    src={apod.url}
+                    frameBorder="0"
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
+                )}
               </div>
               <div className="p-4 lg:w-1/2">
-                <h1 className="text-xl lg:text-2xl font-semibold mb-2">{apod.title}</h1>
+                <h1 className="text-xl lg:text-2xl font-semibold mb-2">
+                  {apod.title}
+                </h1>
                 <p className="text-gray-600">{apod.date}</p>
                 <p className="text-gray-700 mt-2">{apod.explanation}</p>
               </div>
@@ -138,7 +162,7 @@ const APODViewer = () => {
         </div>
       )}
     </div>
-  );  
+  );
 };
 
 export default APODViewer;
